@@ -1,0 +1,2 @@
+# Springboot-MultiModule-Dubbodemo
+使用springboot多模块模式搭建bubbo的测试demo
