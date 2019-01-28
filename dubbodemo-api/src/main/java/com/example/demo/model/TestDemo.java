@@ -11,5 +11,7 @@ import java.io.Serializable;
 @ToString
 public class TestDemo implements Serializable {
     private String id;
-    private String name;
+    private String descript;
+    private String dayIdStart;
+    private String dayIdEnd;
 }

@@ -11,19 +11,21 @@
     <name>dubbodemo-parent</name>
     <packaging>pom</packaging>
 
+    <properties>
+        <springboot.version>2.1.1.RELEASE</springboot.version>
+        <java.version>1.8</java.version>
+        <dubbo.version>2.6.5</dubbo.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <lombok.version>1.18.0</lombok.version>
+        <dubbo-spring.version>0.2.1-SNAPSHOT</dubbo-spring.version>
+        <jodatime.version>2.10.1</jodatime.version>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <dubbo.version>2.0.0</dubbo.version>
-        <zkclient.version>0.10</zkclient.version>
-        <lombok.version>1.18.0</lombok.version>
-    </properties>
 
     <modules>
         <module>dubbodemo-api</module>
@@ -33,7 +35,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -41,26 +42,33 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <!--添加dubbo依赖 -->
             <dependency>
-                <groupId>com.alibaba.spring.boot</groupId>
+                <groupId>com.alibaba.boot</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-spring.version}</version>
+            </dependency>
+
+            <!-- Dubbo dependencies -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
+
             <dependency>
-                <groupId>com.101tec</groupId>
-                <artifactId>zkclient</artifactId>
-                <version>${zkclient.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>slf4j-log4j12</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>log4j</artifactId>
-                        <groupId>log4j</groupId>
-                    </exclusion>
-                </exclusions>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
             </dependency>
 
             <dependency>
@@ -70,9 +78,13 @@
                 <scope>provided</scope>
             </dependency>
 
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${jodatime.version}</version>
+            </dependency>
+
         </dependencies>
-
-
     </dependencyManagement>
     <build>
         <plugins>
