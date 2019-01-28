@@ -1,5 +1,5 @@
 # Springboot-MultiModule-Dubbodemo
-使用springboot多模块模式搭建bubbo的测试demo
+使用springboot多模块模式搭建dubbo的测试demo
 
 本示例项目中配置了一个dubbo项目，包含三个模块
 springboot-dubbo-api、springboot-dubbo-server和
