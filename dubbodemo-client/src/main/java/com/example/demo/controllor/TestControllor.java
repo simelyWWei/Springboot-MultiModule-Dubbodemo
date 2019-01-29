@@ -2,8 +2,8 @@ package com.example.demo.controllor;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.example.demo.api.TestDemoApi;
-import com.example.demo.demoParam.DemoParam;
 import com.example.demo.model.TestDemo;
+import com.example.demo.param.DemoParam;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;

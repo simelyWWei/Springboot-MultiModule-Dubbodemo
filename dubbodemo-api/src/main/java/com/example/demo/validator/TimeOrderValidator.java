@@ -1,4 +1,4 @@
-package com.example.demo.valid;
+package com.example.demo.validator;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -9,7 +9,7 @@ import org.springframework.beans.BeanWrapperImpl;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class CheckTimeOrderValidator implements ConstraintValidator<CheckTimeOrder, Object> {
+public class TimeOrderValidator implements ConstraintValidator<TimeOrder, Object> {
 
     private String startTime;
     private String endTime;
@@ -17,7 +17,7 @@ public class CheckTimeOrderValidator implements ConstraintValidator<CheckTimeOrd
     private DateTimeFormatter formatter;
 
     @Override
-    public void initialize(CheckTimeOrder constraintAnnotation) {
+    public void initialize(TimeOrder constraintAnnotation) {
         this.startTime = constraintAnnotation.startTime();
         this.endTime = constraintAnnotation.endTime();
         this.formatPatternStr = constraintAnnotation.formatPattern();

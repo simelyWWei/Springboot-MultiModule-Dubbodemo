@@ -1,4 +1,4 @@
-package com.example.demo.valid;
+package com.example.demo.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -7,8 +7,8 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PARAMETER, ElementType.FIELD})
-@Constraint(validatedBy = DateStrValidatorClass.class)
-public @interface DateStrValidator {
+@Constraint(validatedBy = DateStrValidator.class)
+public @interface DateStr {
     String formatPattern();
     String message() default "";
 

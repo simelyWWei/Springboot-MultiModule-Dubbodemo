@@ -1,4 +1,4 @@
-package com.example.demo.valid;
+package com.example.demo.validator;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -7,12 +7,12 @@ import org.joda.time.format.DateTimeFormatter;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class DateStrValidatorClass implements ConstraintValidator<DateStrValidator,Object> {
+public class DateStrValidator implements ConstraintValidator<DateStr,Object> {
     private String value;
     DateTimeFormatter formatter;
 
     @Override
-    public void initialize(DateStrValidator constraintAnnotation) {
+    public void initialize(DateStr constraintAnnotation) {
         this.value = constraintAnnotation.formatPattern();
         formatter = DateTimeFormat.forPattern(value);
     }

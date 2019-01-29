@@ -1,4 +1,4 @@
-package com.example.demo.valid;
+package com.example.demo.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -6,10 +6,10 @@ import java.lang.annotation.*;
 
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = CheckTimeOrderValidator.class)
+@Constraint(validatedBy = TimeOrderValidator.class)
 @Documented
-@Repeatable(CheckTimeOrder.List.class)
-public @interface CheckTimeOrder {
+@Repeatable(TimeOrder.List.class)
+public @interface TimeOrder {
     String startTime() default "startTime";
     String endTime() default "EndTime";
     String formatPattern() default "yyyyMMddHHmmss";
@@ -23,7 +23,7 @@ public @interface CheckTimeOrder {
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
     @interface List {
-        CheckTimeOrder[] value();
+        TimeOrder[] value();
     }
 
  }
