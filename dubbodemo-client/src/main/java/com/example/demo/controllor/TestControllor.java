@@ -4,13 +4,13 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.example.demo.api.TestDemoApi;
 import com.example.demo.model.TestDemo;
 import com.example.demo.param.DemoParam;
+import com.example.demo.validator.group.CheckSequence;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 @RestController
 public class TestControllor {
@@ -24,7 +24,7 @@ public class TestControllor {
     }
 
     @RequestMapping(value = "/testdubbo",method = RequestMethod.GET)
-    public String testDubbo(@Valid DemoParam params, BindingResult result){
+    public String testDubbo(@Validated({CheckSequence.class}) DemoParam params, BindingResult result){
         if (result.hasErrors()) {
             if(result.hasErrors()) {
                 for(ObjectError error : result.getAllErrors()) {
@@ -35,6 +35,12 @@ public class TestControllor {
 
         TestDemo testDemo = testDemoApi.getDemo(params.getId(),params.getDayIdStart(),params.getDayIdEnd());
         return testDemo.toString();
+    }
+
+    @RequestMapping(value = "/testRestTemplate",method = RequestMethod.GET)
+    public String testRestTemplate(){
+        String result = testDemoApi.getApiDate();
+        return result;
     }
 
 }
